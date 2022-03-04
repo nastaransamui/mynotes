@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
+import 'package:mynotes/constans/routes.dart';
+
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
 
@@ -51,10 +53,10 @@ class _RegisterViewState extends State<RegisterView> {
                 const InputDecoration(hintText: 'Enter your password here'),
           ),
           ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue, // background
-                onPrimary: Colors.white, // foreground
-              ),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue, // background
+              onPrimary: Colors.white, // foreground
+            ),
             onPressed: () async {
               final email = _email.text;
               final password = _password.text;
@@ -79,8 +81,10 @@ class _RegisterViewState extends State<RegisterView> {
           ),
           ElevatedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil('/login/', (route) => false);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  loginRoute,
+                  (route) => false,
+                );
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.amber, // background
